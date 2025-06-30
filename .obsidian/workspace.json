@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "b4417b71707c45b3",
+        "id": "2749488706bc19c3",
         "type": "tabs",
         "children": [
           {
-            "id": "a6dc9979a0a78f86",
+            "id": "fad3d35cbb13de00",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "resources/typescript interfaces.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           }
         ]
@@ -48,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#red",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,11 +61,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "381b55af25f20854",
@@ -85,7 +83,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "resources/typescript interfaces.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +99,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "resources/typescript interfaces.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +120,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "resources/typescript interfaces.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,10 +140,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b4f71b25dd7f1345",
+  "active": "fad3d35cbb13de00",
   "lastOpenFiles": [
-    "Welcome.md",
     "resources/typescript interfaces.md",
+    "Welcome.md",
     "Untitled.md",
     "resources",
     "archives",
