@@ -125,3 +125,43 @@ Matches http or https URLs
 - Always read regex like a sentence: "^ start, then digits, then $ end".
 - Use online testers like regex101.com to practice.
 - Don’t try to memorize everything. Just keep this cheatsheet handy 😉.
+## Flags (Modifiers)
+
+Flags change **how** the regex works. They go **after the last `/`**.
+
+- `g` → global  
+  - Find **all matches**, not just the first  
+  - Example: `/\d/g` on `"Room 42 and 99"`  
+    - ✅ matches "4", "2", "9", "9"  
+
+- `i` → ignore case  
+  - Makes regex **case-insensitive**  
+  - Example: `/hello/i`  
+    - ✅ matches "Hello", "HELLO", "hElLo"  
+
+- `m` → multiline  
+  - `^` and `$` match **start/end of each line**, not just the whole string  
+  - Example: `/^foo/m` on `"foo\nbar\nfoo"`  
+    - ✅ matches both "foo" lines  
+
+- `s` → dotall  
+  - `.` also matches **newline characters**  
+  - Example: `/a.b/s` on `"a\nb"`  
+    - ✅ matches across lines  
+
+- `u` → unicode  
+  - Treat pattern as full Unicode (needed for emojis, foreign characters)  
+  - Example: `/\p{L}+/u` → matches any Unicode letters  
+
+- `y` → sticky  
+  - Matches **from the last index only** (rarely needed, advanced usage)  
+
+---
+
+⚡ Quick memory trick:  
+- `g` = global (all)  
+- `i` = ignore case  
+- `m` = multiline  
+- `s` = single-line (dotall)  
+- `u` = unicode  
+- `y` = "you stay here" (sticky)  
