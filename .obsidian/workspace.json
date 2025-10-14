@@ -67,12 +67,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "resources/node js child processes.md",
+                "file": "resources/iterators and generators.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "node js child processes"
+              "title": "iterators and generators"
             }
           }
         ],
@@ -226,8 +226,9 @@
   },
   "active": "179ce947565cb199",
   "lastOpenFiles": [
-    "resources/child process.md",
     "resources/node js child processes.md",
+    "resources/iterators and generators.md",
+    "resources/child process.md",
     "resources/regex basics.md",
     "resources/advance curry implementation.md",
     "resources/web design principals.md",
