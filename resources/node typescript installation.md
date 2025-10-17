@@ -21,3 +21,7 @@ yarn add mongoose @typegoose/typegoose config argon2 pino dayjs nanoid nodemaile
 ## npm run dev command
 
  "dev":"ts-node-dev --respawn --transpile-only src/app.ts"
+
+## packages to install
+
+mongoose @typegoose/typegoose config argon2 pino dayjs nanoid nodemailer lodash jsonwebtoken dotenv zod
