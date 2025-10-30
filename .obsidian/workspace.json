@@ -81,12 +81,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "resources/javascript fetch retry.md",
+                "file": "resources/local storage typescript custom hooks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "javascript fetch retry"
+              "title": "local storage typescript custom hooks"
             }
           }
         ],
@@ -240,8 +240,9 @@
   },
   "active": "911c40be0d22fb35",
   "lastOpenFiles": [
-    "resources/javascript advance topics list.md",
     "resources/javascript fetch retry.md",
+    "resources/local storage typescript custom hooks.md",
+    "resources/javascript advance topics list.md",
     "resources/node js child processes.md",
     "resources/mysql joins.md",
     "resources/regex basics.md",
