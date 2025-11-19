@@ -459,7 +459,7 @@ Would you like me to include a **small ASCII visual** showing how the links shif
 
 
 
-## Remove nth from head
+# Remove nth from head
 
 
 ---
@@ -706,4 +706,425 @@ A → B → C → E → null
 
 ---
 
-Would you like me to add a **small pointer diagram** (with arrows and labels for `slow`, `fast`, and `n`) to visualize how the gap between pointers works? It’s really helpful for remembering this one later in Obsidian.
+
+
+
+# Add Two Numbers - Linked List Algorithm
+
+## Problem Statement
+
+Add two non-negative integers represented as linked lists where digits are stored in **reverse order**. Each node contains a single digit.
+
+**Example:**
+
+- Input: `2 → 4 → 3` (represents 342) and `5 → 6 → 4` (represents 465)
+- Output: `7 → 0 → 8` (represents 807)
+- Calculation: 342 + 465 = 807
+
+---
+
+## Complete Code
+
+```javascript
+function addTwoNumbers(l1, l2) {
+    var dummy = new ListNode(0);
+    var current = dummy;
+    var carry = 0;
+    
+    while(l1 != null || l2 != null || carry > 0) {
+        var val1 = l1 ? l1.val : 0;
+        var val2 = l2 ? l2.val : 0;
+        
+        var sum = val1 + val2 + carry;
+        carry = Math.floor(sum / 10);
+        sum %= 10;
+        
+        current.next = new ListNode(sum);
+        current = current.next;
+        
+        if(l1) l1 = l1.next;
+        if(l2) l2 = l2.next;
+    }
+    
+    return dummy.next;
+}
+```
+
+
+---
+
+## Algorithm Steps
+
+### Step 1: Initialize Variables
+
+```javascript
+dummy = new ListNode(0)
+current = dummy
+carry = 0
+```
+
+### Step 2: Loop Condition
+
+Continue while **any** of these is true:
+
+- `l1 != null` (first list has more digits)
+- `l2 != null` (second list has more digits)
+- `carry > 0` (there's a carry to process)
+
+### Step 3: Extract Values
+
+```javascript
+val1 = l1 ? l1.val : 0
+val2 = l2 ? l2.val : 0
+```
+
+If a list has ended, treat its value as 0.
+
+### Step 4: Calculate Sum and Carry
+
+```javascript
+sum = val1 + val2 + carry
+carry = Math.floor(sum / 10)
+sum %= 10
+```
+
+- Add the two digits plus any carry
+- Extract new carry (integer division by 10)
+- Keep only last digit of sum (modulo 10)
+
+### Step 5: Create New Node
+
+```javascript
+current.next = new ListNode(sum)
+current = current.next
+```
+
+- First line: Create a new node with the digit and attach it
+- Second line: Move current pointer to this new node
+
+### Step 6: Move Input Pointers
+
+```javascript
+if(l1) l1 = l1.next
+if(l2) l2 = l2.next
+```
+
+Move to next nodes in input lists if they exist.
+
+### Step 7: Return Result
+
+```javascript
+return dummy.next
+```
+
+Skip the dummy node and return the actual result list.
+
+---
+
+## Detailed Walkthrough: 342 + 465 = 807
+
+### Initial State
+
+```
+l1: 2 → 4 → 3
+l2: 5 → 6 → 4
+dummy: [0]
+current: points to dummy
+carry: 0
+```
+
+---
+
+### Iteration 1
+
+**Extract values:**
+
+```
+val1 = 2 (from l1)
+val2 = 5 (from l2)
+```
+
+**Calculate:**
+
+```
+sum = 2 + 5 + 0 = 7
+carry = floor(7/10) = 0
+sum = 7 % 10 = 7
+```
+
+**Create node:**
+
+```
+current.next = new ListNode(7)
+```
+
+Structure now: `dummy → [7]`
+
+**Move current:**
+
+```
+current = current.next
+```
+
+Current now points to the node containing 7
+
+**Move input pointers:**
+
+```
+l1 = l1.next  (now points to 4)
+l2 = l2.next  (now points to 6)
+```
+
+**State after iteration 1:**
+
+- List: `dummy → 7`
+- carry: 0
+- l1: `4 → 3`
+- l2: `6 → 4`
+
+---
+
+### Iteration 2
+
+**Extract values:**
+
+```
+val1 = 4
+val2 = 6
+```
+
+**Calculate:**
+
+```
+sum = 4 + 6 + 0 = 10
+carry = floor(10/10) = 1  (carry generated!)
+sum = 10 % 10 = 0
+```
+
+**Create node:**
+
+```
+current.next = new ListNode(0)
+```
+
+Structure now: `dummy → 7 → [0]`
+
+**Move current:**
+
+```
+current = current.next
+```
+
+Current now points to the node containing 0
+
+**Move input pointers:**
+
+```
+l1 = l1.next  (now points to 3)
+l2 = l2.next  (now points to 4)
+```
+
+**State after iteration 2:**
+
+- List: `dummy → 7 → 0`
+- carry: 1
+- l1: `3`
+- l2: `4`
+
+---
+
+### Iteration 3
+
+**Extract values:**
+
+```
+val1 = 3
+val2 = 4
+```
+
+**Calculate:**
+
+```
+sum = 3 + 4 + 1 = 8  (includes carry from previous iteration)
+carry = floor(8/10) = 0
+sum = 8 % 10 = 8
+```
+
+**Create node:**
+
+```
+current.next = new ListNode(8)
+```
+
+Structure now: `dummy → 7 → 0 → [8]`
+
+**Move current:**
+
+```
+current = current.next
+```
+
+Current now points to the node containing 8
+
+**Move input pointers:**
+
+```
+l1 = l1.next  (now null)
+l2 = l2.next  (now null)
+```
+
+**State after iteration 3:**
+
+- List: `dummy → 7 → 0 → 8`
+- carry: 0
+- l1: `null`
+- l2: `null`
+
+---
+
+### Loop Termination
+
+Check condition: `l1 != null || l2 != null || carry > 0`
+
+- l1 is null ✗
+- l2 is null ✗
+- carry is 0 ✗
+
+All conditions are false, so loop ends.
+
+**Return:**
+
+```
+return dummy.next
+```
+
+Returns: `7 → 0 → 8` (skips the dummy node)
+
+---
+
+## Key Concepts
+
+### Why Dummy Node?
+
+Without dummy node, you need special logic for the first node:
+
+```javascript
+// Without dummy (complex)
+if (result == null) {
+    result = new ListNode(sum);
+    current = result;
+} else {
+    current.next = new ListNode(sum);
+    current = current.next;
+}
+
+// With dummy (simple)
+current.next = new ListNode(sum);
+current = current.next;
+```
+
+### Pointer Movement Explained
+
+```javascript
+current.next = new ListNode(sum);  // Line 1
+current = current.next;             // Line 2
+```
+
+**Line 1:** Creates a new node and attaches it to the current node's next pointer **Line 2:** Moves the current pointer to the newly created node
+
+**Why both lines are needed:**
+
+- Without line 1: No new node is created
+- Without line 2: current stays at the same position, and next iteration would overwrite the same next pointer
+
+**Visual representation:**
+
+```
+After line 1:
+dummy → [7]
+  ↑
+current (still pointing to dummy)
+
+After line 2:
+dummy → [7]
+        ↑
+      current (moved to node with 7)
+```
+
+### Handling Different Length Lists
+
+**Example: 99 + 1 = 100**
+
+```
+l1: 9 → 9
+l2: 1
+
+Iteration 1: val1=9, val2=1, sum=10, carry=1, digit=0
+Iteration 2: val1=9, val2=0, sum=10, carry=1, digit=0
+Iteration 3: val1=0, val2=0, sum=1, carry=0, digit=1
+
+Result: 0 → 0 → 1 (represents 100)
+```
+
+The ternary operator `l1 ? l1.val : 0` handles this by using 0 when a list has ended.
+
+### Carry Propagation
+
+**Example: 999 + 1 = 1000**
+
+```
+Iteration 1: 9+1+0=10, carry=1, digit=0
+Iteration 2: 9+0+1=10, carry=1, digit=0
+Iteration 3: 9+0+1=10, carry=1, digit=0
+Iteration 4: 0+0+1=1, carry=0, digit=1
+
+Result: 0 → 0 → 0 → 1
+```
+
+The loop continues as long as carry exists, even when both lists are exhausted.
+
+---
+
+## Time and Space Complexity
+
+**Time Complexity:** O(max(m, n))
+
+- m is length of first list
+- n is length of second list
+- We iterate through the longer list once
+
+**Space Complexity:** O(max(m, n))
+
+- Result list length is at most max(m, n) + 1
+- No extra data structures used
+
+---
+
+## Common Mistakes to Avoid
+
+1. **Forgetting to move current pointer**
+    - Results in only one node being created
+2. **Not checking carry after both lists end**
+    - Loop must continue if carry > 0
+3. **Not handling different length lists**
+    - Must use 0 for exhausted lists
+4. **Returning dummy instead of dummy.next**
+    - dummy is just a placeholder, skip it
+5. **Not moving l1 and l2 pointers**
+    - Would process same digits repeatedly
+
+---
+
+## Summary
+
+This algorithm simulates manual addition:
+
+1. Start from the least significant digit (rightmost)
+2. Add corresponding digits plus any carry
+3. Store the result digit (sum % 10)
+4. Calculate new carry (sum / 10)
+5. Move to next digits
+6. Continue until all digits processed and no carry remains
+7. Return the result list
+
+The linked list structure stores each digit in a separate node, and we build the result by creating nodes one by one from least to most significant digit.
