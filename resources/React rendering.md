@@ -20,3 +20,19 @@ React renders your application in two main steps:
 ![[Pasted image 20251121184306.png]]
 
 ![[Pasted image 20251121184327.png]]
+## Render and usestate
+
+- Calling the setter function from `useState` causes the component to re-render (4:47).
+- In development mode, React's Strict Mode (enabled by Create React App) intentionally double-invokes function components, leading to two initial renders (3:43).
+- When updating state to the same value as the current state:
+    - If it's the **initial render** and you set the state to the same value, the component will **not re-render** (7:55).
+    - If the component has **already re-rendered** and you then set the state to the same value, it will re-render **one more time** before bailing out from subsequent renders (8:44).
+- React uses the `Object.is` comparison algorithm to check if the previous and current state values are the same (12:17).
+
+## usereducer and render
+
+
+- **Default Behavior**: Anytime you **dispatch an action** using `useReducer`, the component will **re-render** (3:42, 4:20).
+- **Exception: Updating to the Same Value**:
+    - If you dispatch an action that sets the state to the **same value as the initial state** (after the initial render), the component **will not re-render** 
+    - If the component has **already re-rendered at least once**, and you then dispatch an action that sets the state to the **same value**, React will **re-render the component one more time** before bailing out of any _subsequent_ renders for that same value 
